@@ -1,0 +1,17 @@
+{
+  "name": "chatbotexpressnodejstelegram",
+  "version": "1.0.0",
+  "description": "chatbot telegram express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "john",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "node-telegram-bot-api": "^0.40.0"
+  }
+}
