@@ -5,7 +5,7 @@ const moment = require('moment');
 
 module.exports = function(){
 
-const token = '1196253912:AAEcunkfIwHZfMUuSItnlGJQIeudrrAsz5s'   //adriabot
+const token = 'xxxxxxxxx'   
 
 
 const bot = new TelegramBot(token, {polling: true});
@@ -20,7 +20,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 bot.on('message', async (msg) => {
 
   //comprimentos basicos
-  //passando primeiro nome do usuario na msg
+ 
 var oi = "oi";
 if (msg.text.toString().toLowerCase().indexOf(oi) === 0) {
 bot.sendMessage(msg.chat.id,"Oi " + msg.from.first_name + ", tudo bem com vc?");
@@ -61,18 +61,38 @@ bot.sendMessage(msg.chat.id, "Obrigada! Boa noite  " + msg.from.first_name);
 
 }
 
-/*   data */
+
+/* data*/
 var data = "data";
 if (msg.text.toString().toLowerCase().includes(data)) {
 
 var datamoment = moment().format('LLL');  // April 18, 2020 2:19 PM
-var datachatuser = msg.date.toLocaleString();
-//var datachatuserProx = moment(datachatuser).format('LLL'); 
-console.log(msg.date.toLocaleString().toString());
-console.log(datachatuser.toString());   
-bot.sendMessage(msg.chat.id, "Data moment:  " + datamoment.toString() + " | " + "Data msg.user:  " + datachatuser.toString());
+
+bot.sendMessage(msg.chat.id, "Data Atual:  " + datamoment.toString());
 
 }
+/* dados user*/
+var userdados = "userdados";
+if (msg.text.toString().toLowerCase().includes(userdados)) {
+    var idmessage = msg.message_id;
+    var chat_id = msg.chat.id;
+    var msgfromchat = msg.chat.first_name;
+    var tipochat = msg.chat.type;
+    var msgfromid = msg.from.id;
+    var msgfromfirstname = msg.from.first_name;
+
+    //console.log(msg);
+
+    bot.sendMessage(msg.chat.id, 
+                    "Id messagem: " + idmessage + "|" +  
+                    "Id chat: " + chat_id + "|" 
+                    + "Nome chat: " +  msgfromchat + "|" 
+                    + "Tipo Chat: " +  tipochat + "|" 
+                     + "Id user: " +  msgfromid + "|" 
+                     + "Primeiro nome: " + msgfromfirstname);
+                     
+}
+
 
 
 });
